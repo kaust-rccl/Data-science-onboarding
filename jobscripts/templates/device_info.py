@@ -8,3 +8,5 @@ print('GPU properties                    .............. ',torch.cuda.get_device_
 print('Supported GPU micro-architectures .............. ',torch.cuda.get_arch_list())
 print('Which GPU micro-architecture is this?........... ',torch.cuda.get_device_capability())
 
+print('Number of threads available on host ............ ',torch.get_num_threads())
+
