@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --gpus=4
 #SBATCH --gpus-per-node=4
-#SBATCH --constraint=v100
+#SBATCH --constraint=a100
 #SBATCH --time=00:05:00
 
 module load machine_learning
