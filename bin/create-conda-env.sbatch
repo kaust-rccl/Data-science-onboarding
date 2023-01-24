@@ -6,9 +6,8 @@
 #SBATCH --partition=batch
 #SBATCH --job-name=create-conda-env
 #SBATCH --mail-type=ALL
-#SBATCH --output=bin/%x-%j-slurm.out
-#SBATCH --error=bin/%x-%j-slurm.err
+#SBATCH --output=%x-%j-slurm.out
+#SBATCH --error=%x-%j-slurm.err
 
-module load cuda/11.2.2
 # create the conda environment
 ./bin/create-conda-env.sh
