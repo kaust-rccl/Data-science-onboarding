@@ -6,6 +6,7 @@ data/rf/*
 data/4M_rows.csv
 jobscripts/templates/dcgm/
 jobscripts/templates/*.out
+notebooks/nyctaxi/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
