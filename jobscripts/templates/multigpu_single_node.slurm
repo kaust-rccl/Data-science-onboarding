@@ -9,12 +9,5 @@
 #SBATCH --time=00:05:00
 
 module load machine_learning/2022.11
-#module list
-
-#module load openmpi
-#module load cudnn/8.1.1-cuda11.2.2
-#module load gcc/9.2.0
-
-#source ~/miniconda3/bin/activate /ibex/scratch/barradd/ibex-machine-learning-modules/env 
 
 srun -u python device_info.py

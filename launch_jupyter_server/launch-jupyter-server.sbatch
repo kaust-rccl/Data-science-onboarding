@@ -6,7 +6,7 @@
 #SBATCH --mem=32G
 #SBATCH --partition=batch 
 #SBATCH --job-name=demo
-##SBATCH --reservation=A100
+#SBATCH --reservation=A100
 #SBATCH --mail-type=ALL
 #SBATCH --output=%x-%j-slurm.out
 #SBATCH --error=%x-%j-slurm.err
