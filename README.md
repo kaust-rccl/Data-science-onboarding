@@ -12,7 +12,7 @@ There are examples here for :
 
 ## Authors
 
-- [Dr. Didier Barradas Bautista](https://www.github.com/octokatherine)
+- [Dr. Didier Barradas Bautista](https://www.github.com/D-barradas)
 - [Dr. Mohsin Ahmed Shaikh](https://www.hpc.kaust.edu.sa/team)
 
 
