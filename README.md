@@ -31,8 +31,7 @@ There are examples here for :
 
 ## Support
 
-For support, email ibex@hpc.kaust.edu.sa , help@hpc.kaust.edu.sa or join [Ibex slack channel](kaust-ibex.slack.com 
-)
+For support, email ibex@hpc.kaust.edu.sa , help@hpc.kaust.edu.sa or join [Ibex slack channel](https://kaust-ibex.slack.com/)
 
 
 
