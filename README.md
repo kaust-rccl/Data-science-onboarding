@@ -39,6 +39,11 @@ For support, email ibex@hpc.kaust.edu.sa , help@hpc.kaust.edu.sa or join [Ibex s
 ## 🔗 Links
 
 [KAUST Core Labs](https://corelabs.kaust.edu.sa/
-) : [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/kaust-core-labs/about/)
-[KAUST Supercomputing Lab](https://www.hpc.kaust.edu.sa/) : [![KAUST_HPC](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/KAUST_HPC) 
-KAUST Vizualization Core Lab : [![KVL](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/KAUST_Vislab)
+) : 
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/company/kaust-core-labs/about/)
+
+[KAUST Supercomputing Lab](https://www.hpc.kaust.edu.sa/) : 
+[![KAUST_HPC](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/KAUST_HPC) 
+
+KAUST Vizualization Core Lab : 
+[![KVL](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/KAUST_Vislab)
