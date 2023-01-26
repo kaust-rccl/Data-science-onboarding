@@ -9,6 +9,5 @@
 #SBATCH --time=00:05:00
 
 module load machine_learning
-module list
 
 srun -u python device_info.py
