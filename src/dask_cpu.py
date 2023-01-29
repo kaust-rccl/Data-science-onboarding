@@ -1,4 +1,4 @@
-from dask.distributed import Client 
+from dask.distributed import Client
 import time
 import os
 from sklearn.datasets import make_classification
@@ -46,8 +46,8 @@ def main():
         print ( 'Dask CPU time: %f seconds' % (end - start), end="\n" )
     print ( "This are metrics for the search\n{}".format (pd.DataFrame(grid_search.cv_results_).head() ) ,end = "\n" )
 
-    print (f"best score for gridsreach : {grid_search.score(X, y)}" ) 
-    
+    print (f"best score for gridsreach : {grid_search.score(X, y)}" )
+
 
 if __name__ == '__main__':
     main()
