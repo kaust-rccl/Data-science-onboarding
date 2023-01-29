@@ -1,4 +1,4 @@
-name : null 
+name : null
 channels :
    - conda-forge
 dependencies :
@@ -24,3 +24,6 @@ dependencies :
   - openssl
   - nodejs
   - graphviz
+  - pip
+  - pip:
+    - -r requirements.txt
