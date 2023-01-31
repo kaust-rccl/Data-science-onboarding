@@ -1,5 +1,10 @@
 #!/bin/bash --login
 
+# Load environment which has Jupyter installed. It can be one of the following:
+# - Machine Learning module installed on the system (module load machine_learning)
+# - your own conda environment on Ibex
+# - a singularity container with python environment (conda or otherwise)  
+
 # setup the environment
 module purge
 
@@ -9,21 +14,26 @@ module load machine_learning/2022.11
 #export ENV_PREFIX=$PWD/env
 #conda activate $ENV_PREFIX
 
-# setup ssh tunneling 
-export XDG_RUNTIME_DIR=/tmp IBEX_NODE=$(hostname -s) 
-KAUST_USER=$(whoami)  
-JUPYTER_PORT=$SLURM_STEP_RESV_PORTS
+# setup ssh tunneling
+export XDG_RUNTIME_DIR=/tmp node=$(hostname -s) 
+user=$(whoami) 
+submit_host=${SLURM_SUBMIT_HOST} 
+port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
+echo ${node} pinned to port ${port} on ${submit_host} 
 
-echo "
-To connect to the compute node ${IBEX_NODE} on Ibex running your Jupyter server, 
-you need to create an ssh tunnel from your local machine to login node on Ibex 
-using the following command.
-
-ssh -L ${JUPYTER_PORT}:${IBEX_NODE}.ibex.kaust.edu.sa:${JUPYTER_PORT} ${KAUST_USER}@glogin.ibex.kaust.edu.sa 
-
-Next, you need to copy the second url provided below and paste it into the browser 
-on your local machine.
-" >&2
+# print tunneling instructions  
+echo -e " 
+${node} pinned to port ${port} on ${submit_host} 
+To connect to the compute node ${node} on IBEX running your jupyter notebook server, you need to run following two commands in a terminal 1. 
+Command to create ssh tunnel from your workstation/laptop to glogin: 
+ 
+ssh -L ${port}:${node}.ibex.kaust.edu.sa:${port} ${user}@glogin.ibex.kaust.edu.sa 
+ 
+Copy the link provided below by jupyter-server and replace the NODENAME with localhost before pasting it in your browser on your workstation/laptop.
+" >&2 
+ 
+# Run Jupyter 
+#jupyter notebook --no-browser --port=${port} --port-retries=0 --ip=${node}
 
 # launch jupyter server
-jupyter ${1:-lab} --no-browser --port=${JUPYTER_PORT} --ip=${IBEX_NODE}.ibex.kaust.edu.sa
+jupyter ${1:-lab} --no-browser --port=${port} --port-retries=0  --ip=${node}.ibex.kaust.edu.sa

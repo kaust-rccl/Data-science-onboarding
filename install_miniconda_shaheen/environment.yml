@@ -24,6 +24,7 @@ dependencies :
   - openssl
   - nodejs
   - graphviz
+  - ipyparallel
   - pip
   - pip:
     - -r requirements.txt
