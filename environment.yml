@@ -25,3 +25,11 @@ dependencies :
    - ray-tune
    - torchvision
    - torchaudio
+   - dask-jobqueue
+   - ca-certificates
+   - certifi
+   - openssl
+   - nodejs
+   - graphviz
+   - ipyparallel
+   - code-server
