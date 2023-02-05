@@ -25,7 +25,7 @@ dependencies :
   - nodejs
   - graphviz
   - ipyparallel
-  - code-server
+  - code-server==4.9.1
   - pip
   - pip:
     - -r requirements.txt

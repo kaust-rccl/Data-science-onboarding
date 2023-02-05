@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --time=02:30:00
+#SBATCH --time=00:30:00
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=1
 #SBATCH --cpus-per-gpu=6  
@@ -25,7 +25,6 @@ module load machine_learning/2022.11
 # setup ssh tunneling 
 COMPUTE_NODE=$(hostname -s) 
 CODE_SERVER_PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
-#CODE_SERVER_PORT=$SLURM_STEP_RESV_PORTS
 
 echo "
 echo this is the port from SLURM ${SLURM_STEP_RESV_PORTS}
