@@ -3,12 +3,15 @@ wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.
 
 # install miniconda in user's miniconda3 directory
 bash Miniconda3-latest-Linux-x86_64.sh -b -p $PWD/miniconda3
+lfs setstripe -c 4 $PWD/miniconda3
+
 
 #bash Miniconda3-latest-Linux-x86_64.sh
 rm Miniconda3-latest-Linux-x86_64.sh
 
 # creat a conda_cache directory in user's $HOME directory
 mkdir -p $PWD/conda_cache
+lfs setstripe -c 4 $PWD/conda_cache
 export CONDA_PKGS_DIRS=$PWD/conda_cache
 
 # activate conda base from the command line
