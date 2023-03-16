@@ -7,7 +7,8 @@
 #SBATCH --gpus-per-node=2
 #SBATCH --constraint=a100
 #SBATCH --time=00:05:00
-
+#SBATCH --constraint=a100 
+#SBATCH --reservation=HACKATHON
 module load machine_learning
 module list
 
