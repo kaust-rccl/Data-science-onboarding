@@ -2,10 +2,12 @@ env/
 dcgm/
 bin/*.out
 bin/*.err
-data/
-dcgm/
-err/
-out/
+data/rf/*
+data/4M_rows.csv
+jobscripts/templates/dcgm/
+jobscripts/templates/*.out
+notebooks/nyctaxi/
+src/data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
