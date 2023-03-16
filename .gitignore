@@ -8,6 +8,8 @@ jobscripts/templates/dcgm/
 jobscripts/templates/*.out
 notebooks/nyctaxi/
 src/data/
+err/
+out/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
