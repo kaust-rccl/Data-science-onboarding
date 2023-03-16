@@ -1,6 +1,4 @@
 import torch
-import torchvision
-
 
 print('Is there a GPU?                   .............. ',torch.cuda.is_available())
 print('How many GPUs do we have          .............. ',torch.cuda.device_count())
