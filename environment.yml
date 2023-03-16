@@ -1,0 +1,35 @@
+name : null 
+channels :
+   - nvidia
+   - rapidsai
+   - pytorch
+   - conda-forge
+dependencies :
+   - python=3.9
+   - pytorch-lightning
+   - rapids=22.12
+   - tensorflow
+   - jax
+   - git
+   - jupyterlab
+   - jupyterlab-nvdashboard
+   - dask-labextension
+   - umap-learn
+   - wandb
+   - lightgbm
+   - gh
+   - holoviews
+   - hvplot
+   - graphistry
+   - pycaret
+   - ray-tune
+   - torchvision
+   - torchaudio
+   - dask-jobqueue
+   - ca-certificates
+   - certifi
+   - openssl
+   - nodejs
+   - graphviz
+   - ipyparallel
+   - code-server
