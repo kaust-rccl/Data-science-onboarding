@@ -19,7 +19,7 @@ echo "Node IDs of participating nodes ${nodes_array[*]}"
 head_node="${nodes_array[0]}"
 echo "Getting the IP address of the head node ${head_node}"
 master_ip=$(srun -n 1 -N 1 --gpus=1 -w ${head_node} /bin/hostname -I | cut -d " " -f 2)
-master_port=10121
+master_port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
 echo "head node is ${master_ip}:${master_port}"
 
 
