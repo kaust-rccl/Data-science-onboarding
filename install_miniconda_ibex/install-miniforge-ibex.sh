@@ -77,5 +77,5 @@ source ~/.bashrc
 log "Mambaforge installation script completed."
 # Explain the user the steps
 echo "Type these two lines to activate miniconda"
-echo "export CONDA_PKGS_DIRS=${PREFIX}/conda_cache"
-echo "source ${PREFIX}/miniconda3/bin/activate"
+# echo "export CONDA_PKGS_DIRS=${PREFIX}/conda_cache"
+echo "source ${PREFIX}/mambaforge/bin/activate"
