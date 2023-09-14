@@ -1,32 +1,80 @@
-#!/bin/bash --login
-# entire script fails if a single command fails
-set -e
-# define the folder to install 
-# export PREFIX=$HOME/miniconda3
-# or define a path to install
-export PREFIX=/ibex/scratch/$USER
+# Define the log file path
+log_file="/ibex/user/$USER/mambaforge_installation.log"
 
-# download and install miniforge
-# this will create the folder $PREFIX and install miniforge there
-curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
-bash Mambaforge-$(uname)-$(uname -m).sh -b -p $PREFIX/miniconda3
+# Function to log messages
+log() {
+    local message="$1"
+    logger -t "Mambaforge installation" "$message"
+    echo "$(date): $message" >> "$log_file"
+}
 
-# creat a conda_cache directory in user's $HOME directory
-mkdir -p $PREFIX/conda_cache
-export CONDA_PKGS_DIRS=$PREFIX/conda_cache
+# Initialize the log file if it doesn't exist
+touch "$log_file"
+log "Mambaforge installation script started"
 
-# once installed, we need to activate the base environment
-source $PREFIX/bin/activate
+# Check if the directory /ibex/user/$USER exists
+if [ ! -d "/ibex/user/$USER" ]; then
+    echo "Please send an email to ibex@kaust.edu.sa to create a WekaIO Directory for you"
+    exit 1
+fi
 
-# update conda to most recent version (if necessary)
-# conda update --name base --channel defaults --yes conda
+# install Mambaforge in user's WekaIO directory
+export PREFIX=/ibex/user/$USER
+
+# Check the output of the "which conda" command
+conda_path=$(which conda 2>/dev/null)
+
+# Check if conda is installed
+if [ -n "$conda_path" ]; then
+
+    # Get the main conda directory
+    grandparent_dir=$(dirname "$(dirname "$conda_path")")
+    log "Backing up old conda envs..."
+    cp -r $grandparent_dir/envs $PREFIX/conda_envs_backup
+    echo "Conda environments were backed up to $PREFIX/conda_envs_backup"
+    log "Backup done"
+    log "Deleting old conda version installed at: $grandparent_dir"
+    rm -rf "$grandparent_dir"
+else
+    log "No previous conda version installed, resuming..."
+fi
+
+#Download and install latest Mambaforge
+wget --quiet https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+log "Installing Mambaforge..."
+bash Mambaforge-Linux-x86_64.sh -b -p $PREFIX/mambaforge
+source $PREFIX/mambaforge/bin/activate
+conda deactivate
+conda init bash
+rm Mambaforge-Linux-x86_64.sh
+log "Mambaforge installation completed."
+
+# Create the conda_cache directory if it doesn't exist
+if [ ! -d "$PREFIX/conda_cache" ]; then
+    log "Creating conda_cache directory at $PREFIX/conda_cache"
+    mkdir -p "$PREFIX/conda_cache"
+fi
+
+# Update the CONDA_PKGS_DIRS variable in ~/.bashrc
+RELOCATE_CACHE="export CONDA_PKGS_DIRS=${PREFIX}/conda_cache"
+if ! grep -qF "$RELOCATE_CACHE" ~/.bashrc; then
+  # If the line is not found, append it to ~/.bashrc
+  echo "$RELOCATE_CACHE" >> ~/.bashrc
+fi
+
+# source ~/.bashrc to load modifications
+source ~/.bashrc
 
 # make sure that base environment is not active by default
 conda config --set auto_activate_base false
 
-# remove the installer
-rm Mambaforge-$(uname)-$(uname -m).sh
+# move the envs installation path to weka
+conda config --add envs_dirs $PREFIX/conda-environments
 
+# second source required for update to conda config file to take effect
+source ~/.bashrc
+
+log "Mambaforge installation script completed."
 # Explain the user the steps
 echo "Type these two lines to activate miniconda"
 echo "export CONDA_PKGS_DIRS=${PREFIX}/conda_cache"
