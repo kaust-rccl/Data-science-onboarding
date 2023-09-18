@@ -12,7 +12,7 @@ log() {
 touch "$log_file"
 log "Mambaforge installation script started"
 
-# Check if the directory /ibex/user/$USER exists
+# Check if the directory /ibex/user/$USER exists     
 if [ ! -d "/ibex/user/$USER" ]; then
     echo "Please send an email to ibex@kaust.edu.sa to create a WekaIO Directory for you"
     exit 1
