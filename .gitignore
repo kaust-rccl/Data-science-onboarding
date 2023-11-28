@@ -10,6 +10,11 @@ notebooks/nyctaxi/
 src/data/
 err/
 out/
+torch_ddp/data/
+torch_ddp/*out
+*.err
+*.out
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
