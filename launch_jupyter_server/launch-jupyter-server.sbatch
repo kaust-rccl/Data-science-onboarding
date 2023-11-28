@@ -9,10 +9,7 @@
 #SBATCH --mail-type=ALL
 #SBATCH --output=%x-%j-slurm.out
 #SBATCH --error=%x-%j-slurm.err 
- 
-# use srun to launch Jupyter server in order to reserve a port
-#srun --resv-ports=1 launch-jupyter-server.srun
-#srun launch-jupyter-server-v2.srun
+
 
 # Load environment which has Jupyter installed. It can be one of the following:
 # - Machine Learning module installed on the system (module load machine_learning)

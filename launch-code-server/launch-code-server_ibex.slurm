@@ -19,7 +19,7 @@ ENV_PREFIX="$PROJECT_DIR"/env
 PATH="$HOME/.local/bin:$PATH"
 
 module purge
-module load machine_learning/2022.11
+module load machine_learning
 # conda activate "$ENV_PREFIX"
 
 # setup ssh tunneling 

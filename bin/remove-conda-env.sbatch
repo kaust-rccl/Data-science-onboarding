@@ -7,6 +7,6 @@
 #SBATCH --output=bin/%x-%j-slurm.out
 #SBATCH --error=bin/%x-%j-slurm.err
 
-# create the conda environment
+# path to the conda environment
 export ENV_PREFIX="$PWD"/env
 mamba remove -p ${ENV_PREFIX} --all > /dev/null
