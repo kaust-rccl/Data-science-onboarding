@@ -8,6 +8,6 @@
 #SBATCH --constraint=v100
 #SBATCH --time=00:05:00
 
-module load machine_learning/2022.11
+module load machine_learning
 
 srun -u python device_info.py
