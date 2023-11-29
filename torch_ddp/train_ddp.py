@@ -4,7 +4,7 @@ Link: https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html
 Modified for educational purposes.
 Nikolas, AI Summer
 """
-import os 
+import os
 gpu_list = "0,1,2,3"
 os.environ['CUDA_VISIBLE_DEVICES'] = gpu_list
 
@@ -35,14 +35,14 @@ def create_data_loader_cifar10():
     batch_size = 256
 
     trainset = torchvision.datasets.CIFAR10(root='data', train=True,
-                                            download=True, transform=transform)                                  
-    train_sampler = DistributedSampler(dataset=trainset, shuffle=True)                                                  
+                                            download=True, transform=transform)
+    train_sampler = DistributedSampler(dataset=trainset, shuffle=True)
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size,
                                             sampler=train_sampler, num_workers=10, pin_memory=True)
 
     testset = torchvision.datasets.CIFAR10(root='data', train=False,
                                         download=True, transform=transform)
-    test_sampler =DistributedSampler(dataset=testset, shuffle=True)                                         
+    test_sampler =DistributedSampler(dataset=testset, shuffle=True)
     testloader = torch.utils.data.DataLoader(testset, batch_size=batch_size,
                                             shuffle=False, sampler=test_sampler, num_workers=10)
 
@@ -62,7 +62,7 @@ def train(net, trainloader):
             # get the inputs; data is a list of [inputs, labels]
             inputs, labels = data
 
-            images, labels = inputs.cuda(), labels.cuda() 
+            images, labels = inputs.cuda(), labels.cuda()
 
             # zero the parameter gradients
             optimizer.zero_grad()
@@ -75,9 +75,9 @@ def train(net, trainloader):
 
             # print statistics
             running_loss += loss.item()
-        
+
         print(f'[Epoch {epoch + 1}/{epochs}] loss: {running_loss / num_of_batches:.3f}')
-    
+
     print('Finished Training')
 
 
@@ -93,7 +93,7 @@ def test(net, PATH, testloader):
         for data in testloader:
             images, labels = data
 
-            images, labels = images.cuda(), labels.cuda() 
+            images, labels = images.cuda(), labels.cuda()
             # calculate outputs by running images through the network
             outputs = net(images)
             # the class with the highest energy is what we choose as prediction
@@ -112,8 +112,8 @@ def init_distributed():
     rank = int(os.environ["RANK"])
     world_size = int(os.environ['WORLD_SIZE'])
     local_rank = int(os.environ['LOCAL_RANK'])
-    
-    
+
+
     print (f"{local_rank} : {world_size} , {rank} \n")
     dist.init_process_group(
             backend="nccl",
@@ -130,15 +130,15 @@ def init_distributed():
 
 if __name__ == '__main__':
     start = time.time()
-    
+
     init_distributed()
-    
-    
+
+
     PATH = './cifar_net.pth'
     trainloader, testloader = create_data_loader_cifar10()
     net = torchvision.models.resnet50(False).cuda()
 
-    # Convert BatchNorm to SyncBatchNorm. 
+    # Convert BatchNorm to SyncBatchNorm.
     net = nn.SyncBatchNorm.convert_sync_batchnorm(net)
 
     local_rank = int(os.environ['LOCAL_RANK'])

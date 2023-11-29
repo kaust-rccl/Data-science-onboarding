@@ -26,9 +26,8 @@ echo "head node is ${master_ip}:${master_port}"
 for (( i=0; i< ${SLURM_NNODES}; i++ ))
 do
      srun -n 1 -N 1 -c ${SLURM_CPUS_PER_TASK} -w ${nodes_array[i]} --gpus=${SLURM_GPUS_PER_NODE}  \
-      python -m torch.distributed.launch \
-     --nproc_per_node=${SLURM_GPUS_PER_NODE} --nnodes=${SLURM_NNODES} --node_rank=${i} \
-     --master_addr=${master_ip} --master_port=${master_port}\
+     torchrun --nproc_per_node ${SLURM_GPUS_PER_NODE} --nnodes ${SLURM_NNODES} --node_rank ${i} \
+     --master_addr ${master_ip} --master_port ${master_port}\
      train_ddp.py &
  
 

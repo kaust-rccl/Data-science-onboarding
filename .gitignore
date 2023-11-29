@@ -12,8 +12,10 @@ err/
 out/
 torch_ddp/data/
 torch_ddp/*out
+torch_ddp/*.pth
 *.err
 *.out
+containers/*.sif
 
 
 # Byte-compiled / optimized / DLL files
