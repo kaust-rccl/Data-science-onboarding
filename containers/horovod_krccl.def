@@ -1,0 +1,24 @@
+BootStrap: docker
+From: krccl/horovod_gpu:0192
+
+%post
+    chmod 1777 /tmp
+    
+    # Install necessary dependencies for matplotlib and torchdiffeq
+    apt-get update && \
+    apt-get install -y --no-install-recommends \
+        libfreetype6-dev \
+        libpng-dev \
+        libjpeg-dev \
+        libffi-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+    # Install matplotlib and torchdiffeq using pip
+    python -m pip install matplotlib torchdiffeq
+
+%runscript
+    /bin/bash
+
+
+
+

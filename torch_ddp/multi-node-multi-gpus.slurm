@@ -8,6 +8,7 @@
 #SBATCH --time=00:30:00
 #SBATCH --mem=50G
 
+module load rl9-gpustack
 module load machine_learning
 export OMP_NUM_THREADS=1
 # Getting the node names
