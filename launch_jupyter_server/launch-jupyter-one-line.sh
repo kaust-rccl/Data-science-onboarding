@@ -3,7 +3,7 @@
 (
     eval "$(conda shell.bash hook)"
     # Load and run packages
-    module load machine_learning/2023.04
+    module load machine_learning
     # or activate the conda environment 
     #export ENV_PREFIX=$PWD/env
     #conda activate $ENV_PREFIX
