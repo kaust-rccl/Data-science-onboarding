@@ -14,11 +14,14 @@
 
 export CODE_SERVER_CONFIG=~/.config/code-server/config.yaml
 export XDG_CONFIG_HOME=$HOME/tmpdir
+export CODE_SERVER_EXTENSIONS=/ibex/user/$USER/code-server/extensions
+mkdir -p $CODE_SERVER_EXTENSIONS
 PROJECT_DIR="$PWD"
 ENV_PREFIX="$PROJECT_DIR"/env
 PATH="$HOME/.local/bin:$PATH"
 
 module purge
+module load rl9-gpustack
 module load machine_learning
 # conda activate "$ENV_PREFIX"
 
@@ -42,4 +45,4 @@ localhost:${CODE_SERVER_PORT}
 " >&2
 
 # launch code server
-code-server --auth none --bind-addr ${COMPUTE_NODE}:${CODE_SERVER_PORT} "$PROJECT_DIR"
+code-server --auth none --bind-addr ${COMPUTE_NODE}:${CODE_SERVER_PORT} --extensions-dir=${CODE_SERVER_EXTENSIONS} "$PROJECT_DIR"
