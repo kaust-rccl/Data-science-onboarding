@@ -3,6 +3,7 @@
 (
     eval "$(conda shell.bash hook)"
     # Load and run packages
+    module load rl9-gpustack
     module load machine_learning
     # or activate the conda environment 
     #export ENV_PREFIX=$PWD/env

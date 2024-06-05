@@ -19,7 +19,8 @@
 # setup the environment
 module purge
 
-# You can use the machine learning module 
+# You can use the machine learning module
+module load rl9-gpustack
 module load machine_learning
 # or you can activate the conda environment directly by uncommenting the following lines
 #export ENV_PREFIX=$PWD/env

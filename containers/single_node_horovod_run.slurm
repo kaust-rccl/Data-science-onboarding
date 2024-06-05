@@ -24,3 +24,4 @@ mpirun -np 4  singularity exec --nv $IMAGE python ./pytorch_synthetic_benchmark.
 
 echo "Tensorflow2 with Horovod"
 mpirun -np 4  singularity exec --nv $IMAGE python ./tensorflow2_synthetic_benchmark.py --model ResNet50  --batch-size 128 --num-warmup-batches 10 --num-batches-per-iter 10 --num-iters 10 >> TF2_1node.log
+

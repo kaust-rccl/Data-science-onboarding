@@ -1,0 +1,8 @@
+
+CODE_SERVER_PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
+local_ip=$(hostname -I  | awk -F" " '{print $1}')
+
+
+podman run -it --rm --name code-server -p ${local_ip}:${CODE_SERVER_PORT}:8443 -e NVIDIA_VISIBLE_DEVICES='' --device=nvidia.com/gpu=all --security-opt=label=disable --root=/ibex/user/$USER/podman_images -v ~/.config/code-server/:/home/coder/.config -e PUID="$(id -u)" -e PGID="$(id -g)" linuxserver/code-server
+
+

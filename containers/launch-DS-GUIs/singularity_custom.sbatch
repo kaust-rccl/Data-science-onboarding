@@ -14,4 +14,4 @@ mkdir -p /ibex/user/$USER/singularity_cache
 export SINGULARITY_CACHEDIR=/ibex/user/$USER/singularity_cache
 unset SINGULARITY_BIND
 
-singularity build -f --nv --force $PWD/horovod.sif $PWD/horovod.def
+singularity build -f --nv --force $PWD/code-server.sif $PWD/custom_code-server.def
