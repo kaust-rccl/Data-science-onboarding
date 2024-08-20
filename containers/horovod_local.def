@@ -1,5 +1,6 @@
-BootStrap: docker
-From: horovod/horovod:latest
+Bootstrap: localimage
+From: horovod.sif.old
+
 
 %post
     chmod 1777 /tmp
@@ -13,7 +14,7 @@ From: horovod/horovod:latest
     && rm -rf /var/lib/apt/lists/*
 
     # Install matplotlib and torchdiffeq using pip
-    python -m pip install matplotlib pytest torchdiffeq tensorboardX
+    python -m pip install matplotlib torchdiffeq tensorboardX
 
 %runscript
     /bin/bash

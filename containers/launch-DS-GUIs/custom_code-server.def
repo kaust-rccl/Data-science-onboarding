@@ -1,0 +1,15 @@
+BootStrap: docker
+From: condaforge/mambaforge:latest
+
+%post
+    chmod 1777 /tmp
+    # Install code-server
+    mamba install -n base -c conda-forge python pip ipykernel code-server
+    mamba clean --all -y
+
+%runscript
+    exec "$@"
+
+
+
+

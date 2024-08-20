@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-gpu=6  
 #SBATCH --mem=16G
 #SBATCH --partition=batch 
-#SBATCH --job-name=code-server
+#SBATCH --job-name=launch-code-server
 #SBATCH --mail-type=ALL
 #SBATCH --output=%x-%j-slurm.out
 #SBATCH --error=%x-%j-slurm.err
@@ -21,7 +21,7 @@ ENV_PREFIX="$PROJECT_DIR"/env
 PATH="$HOME/.local/bin:$PATH"
 
 module purge
-module load machine_learning
+module load singularity
 # conda activate "$ENV_PREFIX"
 
 # setup ssh tunneling 
@@ -44,4 +44,4 @@ localhost:${CODE_SERVER_PORT}
 " >&2
 
 # launch code server
-code-server --auth none --bind-addr ${COMPUTE_NODE}:${CODE_SERVER_PORT} --extensions-dir=${CODE_SERVER_EXTENSIONS} "$PROJECT_DIR"
+singularity exec code-server.sif code-server --auth none --bind-addr ${COMPUTE_NODE}:${CODE_SERVER_PORT} --extensions-dir=${CODE_SERVER_EXTENSIONS} "$PROJECT_DIR"

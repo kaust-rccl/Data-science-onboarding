@@ -1,21 +1,18 @@
 env/
 dcgm/
-bin/*.out
-bin/*.err
 data/rf/*
 data/4M_rows.csv
 jobscripts/templates/dcgm/
-jobscripts/templates/*.out
 notebooks/nyctaxi/
 src/data/
 err/
 out/
 torch_ddp/data/
-torch_ddp/*out
 torch_ddp/*.pth
-*.err
-*.out
-containers/*.sif
+**/*.err
+**/*.out
+**/*.sif
+launch-jupyter-server.sbatch
 
 
 # Byte-compiled / optimized / DLL files
