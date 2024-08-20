@@ -1,4 +1,4 @@
-#!/bin/bash --login
+#!/bin/bash
 #SBATCH --time=00:30:00
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=1
@@ -21,6 +21,7 @@ ENV_PREFIX="$PROJECT_DIR"/env
 PATH="$HOME/.local/bin:$PATH"
 
 module purge
+module load rl9-gpustack
 module load machine_learning
 # conda activate "$ENV_PREFIX"
 
@@ -29,7 +30,7 @@ COMPUTE_NODE=$(hostname -s)
 CODE_SERVER_PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
 
 echo "
-echo this is the port from SLURM ${SLURM_STEP_RESV_PORTS}
+this is the port from SLURM ${SLURM_STEP_RESV_PORTS}
 To connect to the compute node ${COMPUTE_NODE} on Ibex running your Code Server, 
 you need to create an ssh tunnel from your local machine to login node on Ibex 
 using the following command.
