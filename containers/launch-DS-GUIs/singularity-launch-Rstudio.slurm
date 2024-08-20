@@ -1,10 +1,13 @@
 #!/bin/bash
 #SBATCH -N 1
-#SBATCH --time=01:00:00
+#SBATCH --time=00:30:00
 #SBATCH --ntasks=8
 #SBATCH --mem=50G
+#SBATCH --partition=batch 
+#SBATCH --job-name=RStudio
+#SBATCH --mail-type=ALL
 #SBATCH --output=rstudio-server.job%j.out
-#SBATCH --error=rstudio-server.job%j.error
+#SBATCH --error=rstudio-server.job%j.err
 
 # load singularity module
 
