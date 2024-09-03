@@ -16,4 +16,4 @@ export SINGULARITY_CACHEDIR=/ibex/user/$USER/singularity_cache
 unset SINGULARITY_BIND
 
 #singularity pull docker://krccl/horovod_gpu:0192
-singularity build -f --force $PWD/horovod_krccl.sif $PWD/horovod_krccl.def
+singularity build -f --nv --force $PWD/horovod_krccl.sif $PWD/horovod_krccl.def
