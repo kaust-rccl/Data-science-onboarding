@@ -6,6 +6,7 @@
 #SBATCH --gpus-per-node=2
 #SBATCH --cpus-per-gpu=2  
 #SBATCH --mem=32G
+#SBATCH --constrain=v100
 #SBATCH --partition=batch 
 #SBATCH --job-name=horovod_multiGPU_demo
 #SBATCH --output=%x-%j-slurm.out
