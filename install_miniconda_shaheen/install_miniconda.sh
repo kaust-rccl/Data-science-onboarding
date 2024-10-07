@@ -1,27 +1,15 @@
-# install miniconda in user's $HOME directory
-wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+# create the folder my software and go there
+mkdir -p $MY_SW && cd $MY_SW
 
-# install miniconda in user's miniconda3 directory
-bash Miniconda3-latest-Linux-x86_64.sh -b -p $PWD/miniconda3
-lfs setstripe -c 4 $PWD/miniconda3
-
-
-#bash Miniconda3-latest-Linux-x86_64.sh
-rm Miniconda3-latest-Linux-x86_64.sh
-
-# creat a conda_cache directory in user's $HOME directory
-mkdir -p $PWD/conda_cache
-lfs setstripe -c 4 $PWD/conda_cache
-export CONDA_PKGS_DIRS=$PWD/conda_cache
+# execute the local miniconda for shaheen
+bash /sw/sources/miniconda/conda24.1.2-python3.12.1/Miniconda3-latest-Linux-x86_64.sh -b -s -p $MY_SW/miniconda3-amd64 -u
 
 # activate conda base from the command line
-source $PWD/miniconda3/bin/activate
+# you might need this on your scripts
+source $MY_SW/miniconda3-amd64/bin/activate
 
-# update conda to most recent version (if necessary)
-conda update --name base --channel defaults --yes conda
+# install mamba (faster, Vexperimental package manager) from Conda Forge
+conda install -y -c conda-forge mamba
 
-# install mamba (faster, experimental package manager) from Conda Forge
-conda install --name base --channel conda-forge mamba --yes
-
-# make sure that base environment is not active by default
-conda config --set auto_activate_base false
+# exit conda
+conda deactivate
