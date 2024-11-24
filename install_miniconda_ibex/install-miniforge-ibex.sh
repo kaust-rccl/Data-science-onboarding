@@ -40,14 +40,14 @@ else
 fi
 
 #Download and install latest Mambaforge
-wget --quiet https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
-log "Installing Mambaforge..."
-bash Mambaforge-Linux-x86_64.sh -b -p $PREFIX/mambaforge
+wget --quiet https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+log "Installing Miniforge..."
+bash Miniforge3-Linux-x86_64.sh -b -p $PREFIX/mambaforge
 source $PREFIX/mambaforge/bin/activate
 conda deactivate
 conda init bash
-rm Mambaforge-Linux-x86_64.sh
-log "Mambaforge installation completed."
+rm Miniforge3-Linux-x86_64.sh
+log "Miniforge3 installation completed."
 
 # Create the conda_cache directory if it doesn't exist
 if [ ! -d "$PREFIX/conda_cache" ]; then
