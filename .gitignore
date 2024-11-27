@@ -13,7 +13,9 @@ torch_ddp/*.pth
 **/*.out
 **/*.sif
 launch-jupyter-server.sbatch
-
+**/*.gguf
+**/*.bin
+**/ollama
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
