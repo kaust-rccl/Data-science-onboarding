@@ -27,7 +27,7 @@ module purge
 source /ibex/user/${USER}/miniconda3/bin/activate 
 export CONDA_PKGS_DIRS=/ibex/user/${USER}/conda_cache
 
-export ENV_PREFIX=/ibex/user/${USER}/miniconda3/envs/rapids-24.08
+export ENV_PREFIX=/ibex/user/${USER}/miniconda3/envs/jupyter_ai
 #export ENV_PREFIX=$PWD/env
 conda activate $ENV_PREFIX
 
