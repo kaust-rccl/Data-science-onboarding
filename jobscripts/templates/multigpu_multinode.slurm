@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=my_first_job
+#SBATCH --job-name=my_multinode
 #SBATCH --ntasks=4
 #SBATCH --cpus-per-task=4
 #SBATCH --gpus=16
