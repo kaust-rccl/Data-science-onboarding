@@ -1,0 +1,16 @@
+name: jupyter_ai
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - jupyterlab~=4.0
+  - jupyter-ai
+  - langchain-core=0.3.21
+  - pip
+  - pip:
+      - gpt4all==2.8.2
+      - tqdm==4.67.1
+      - langchain-core==0.3.21
+      - langchain-ollama==0.2.0
+      - ollama==0.4.1
