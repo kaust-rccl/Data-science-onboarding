@@ -1,0 +1,9 @@
+name: continue_ai
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - jupyterlab=4.0
+  - code-server=4.96.2
+  - pip
