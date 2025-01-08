@@ -4,6 +4,6 @@ channels:
   - defaults
 dependencies:
   - python=3.12
-  - jupyterlab~=4.0
-  - code-server
+  - jupyterlab=4.0
+  - code-server=4.96.2
   - pip
