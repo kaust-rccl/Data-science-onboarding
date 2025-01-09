@@ -18,13 +18,13 @@ There are examples here for :
 
 ## Documentation
 
-[Ibex training](https://www.hpc.kaust.edu.sa/ibex/training)
+[Ibex training](https://docs.hpc.kaust.edu.sa/training/ibex_user_training.html)
 
-[Shaheen training](https://www.hpc.kaust.edu.sa/training)
+[Shaheen training](https://docs.hpc.kaust.edu.sa/training/shaheen_user_training.html)
 
-[KSL How-To repository](https://kaust-supercomputing-lab.atlassian.net/l/cp/tAG1wkA0)
+<!-- [KSL How-To repository](https://kaust-supercomputing-lab.atlassian.net/l/cp/tAG1wkA0) -->
 
-[Starting pack for ibex](https://kaust-supercomputing-lab.atlassian.net/l/cp/vEPgAcio)
+[Starting pack for ibex](https://wiki.vis.kaust.edu.sa/dstools#ibex_starting_pack)
 
 
 
