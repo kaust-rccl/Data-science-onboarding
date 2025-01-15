@@ -28,7 +28,7 @@ $OLLAMA_BINARY -v
 
 # # download qwnen2.5
 echo "Downloading qwnen2.5..."
-$OLLAMA_BINARY pull qwnen2.5-coder:1.5b
+$OLLAMA_BINARY pull qwen2.5-coder:1.5b
 
 # # download pull llama3.1
 $OLLAMA_BINARY pull llama3.1:8b
