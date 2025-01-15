@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --nodes=1
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=192
 #SBATCH --time=00:30:00
 #SBATCH --partition=ppn
 #SBATCH -A v10004
