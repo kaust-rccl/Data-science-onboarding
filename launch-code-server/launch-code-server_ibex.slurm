@@ -20,9 +20,14 @@ PROJECT_DIR="$PWD"
 ENV_PREFIX="$PROJECT_DIR"/env
 PATH="$HOME/.local/bin:$PATH"
 
+# use the machine learning modelue from Ibex
 module purge
 module load rl9-gpustack
 module load machine_learning
+
+# Or use the conda environment
+# source /ibex/scratch/$USER/miniconda3/bin/activate
+# export CONDA_PKGS_DIRS=/ibex/user/${USER}/conda_cache
 # conda activate "$ENV_PREFIX"
 
 # setup ssh tunneling 
