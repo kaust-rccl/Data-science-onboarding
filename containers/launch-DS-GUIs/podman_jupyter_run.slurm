@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --time=01:00:00
+#SBATCH --time=00:30:00
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=1
-#SBATCH --cpus-per-gpu=16  
-#SBATCH --mem=32G
+#SBATCH --cpus-per-gpu=8  
+#SBATCH --mem=16G
 #SBATCH --partition=batch 
 #SBATCH --job-name=jupyter
 #SBATCH --mail-type=ALL
@@ -16,20 +16,18 @@ submit_host=${SLURM_SUBMIT_HOST}
 port=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
 local_ip=$(hostname -I  | awk -F" " '{print $1}')
 
+# print tunneling instructions  
 echo -e " 
-
-${node} pinned to port ${port} 
-
-  You can now view your Jupyter Lab in your browser.
-
-  Local URL: http://localhost:8501
-  Network URL: http://${local_ip}:${port}
-  Network URL: http://${node}.kaust.edu.sa:${port}
-
+${node} pinned to port ${port} on ${submit_host} 
+To connect to the compute node ${node} on IBEX running your jupyter notebook server, you need to run following two commands in a terminal 1. 
+Command to create ssh tunnel from you workstation/laptop to glogin: 
+ 
+ssh -L ${port}:${node}.ibex.kaust.edu.sa:${port} ${user}@glogin.ibex.kaust.edu.sa 
+ 
+Copy the link provided below by jupyter-server and replace the NODENAME with localhost before pasting it in your browser on your workstation/laptop.
 " >&2 
 
 mkdir -p /run/user/${UID}/bus 
-
 
 # launch podman
 
