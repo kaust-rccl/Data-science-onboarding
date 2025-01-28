@@ -30,6 +30,8 @@ Copy the link provided below by jupyter-server and replace the NODENAME with loc
 mkdir -p /run/user/${UID}/bus 
 
 # launch podman
+# Use the full image name to avoid short-name resolution issues
+IMAGE="docker.io/library/jupyter/datascience-notebook"
 
 podman run \
 -e NVIDIA_VISIBLE_DEVICES='' \
@@ -40,5 +42,5 @@ podman run \
 --device=nvidia.com/gpu=all \
 --security-opt=label=disable \
 --root=/ibex/user/${user}/podman \
-jupyter/datascience-notebook \
+${IMAGE} \
 jupyter lab --ip=0.0.0.0 --allow-root 
