@@ -40,5 +40,5 @@ podman run \
 --device=nvidia.com/gpu=all \
 --security-opt=label=disable \
 --root=/ibex/user/${user}/podman \
-abdelghafour1/tf_pip_gpu_vf:tf_gpu \
+jupyter/datascience-notebook \
 jupyter lab --ip=0.0.0.0 --allow-root 
