@@ -36,9 +36,10 @@ IMAGE="docker.io/jupyter/datascience-notebook"
 podman run \
 -e NVIDIA_VISIBLE_DEVICES='' \
 --rm \
+--name jupyter \
 -p ${port}:8888 \
 -p 8501:8501 \
--v ${PWD}:/app/mycode \
+-v ${PWD}:/home/jovyan/work \
 --device=nvidia.com/gpu=all \
 --security-opt=label=disable \
 --root=/ibex/user/${user}/podman \
