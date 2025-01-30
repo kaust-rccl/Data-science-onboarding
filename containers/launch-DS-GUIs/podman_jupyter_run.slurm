@@ -34,14 +34,14 @@ mkdir -p /run/user/${UID}/bus
 IMAGE="docker.io/jupyter/datascience-notebook"
 
 podman run \
--e NVIDIA_VISIBLE_DEVICES='' \
---rm \
---name jupyter \
--p ${port}:8888 \
--p 8501:8501 \
--v ${PWD}:/home/jovyan/work \
---device=nvidia.com/gpu=all \
---security-opt=label=disable \
---root=/ibex/user/${user}/podman \
-${IMAGE} \
-jupyter lab --ip=0.0.0.0 --allow-root 
+    -e NVIDIA_VISIBLE_DEVICES='' \
+    --rm \
+    --name jupyter \
+    -p ${port}:8888 \
+    -p 8501:8501 \
+    -v ${PWD}:/home/jovyan/work \
+    --device=nvidia.com/gpu=all \
+    --security-opt=label=disable \
+    --root=/ibex/user/${user}/podman \
+    ${IMAGE} \
+    jupyter lab --ip=0.0.0.0 --allow-root 
