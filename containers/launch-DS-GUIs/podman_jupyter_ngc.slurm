@@ -28,7 +28,7 @@ Network URL: http://${node}.kaust.edu.sa:${port}
 
 " >&2
 
-mkdir -p /run/user/${UID}/bus /ibex/user/${user}/podman
+mkdir -p /run/user/${UID}/bus /ibex/user/${user}/podman_images
 
 podman run \
 -e NVIDIA_VISIBLE_DEVICES='' \
