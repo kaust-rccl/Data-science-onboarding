@@ -15,7 +15,7 @@ module load singularity/3.9.7
 module load rl9-cpustack
 
 # Pull singularity image
-singularity pull library://mgharawy97/collection/rstudio-server.sif
+singularity pull docker://krccl/rstudio
 ###################################
 
 
@@ -77,12 +77,11 @@ END
 export SINGULARITYENV_PATH=$PATH:/usr/lib/rstudio-server/bin
 
 # Modify the value of next line to load the modules to use with Rstudio.
-echo "here"
-module avail bioconductor
+# bioconductor is for bioinformatic packages 
 export modules="bioconductor/3.19/R-4.4.0"
 
-singularity exec rstudio-server.sif_latest.sif \
-    bash -c "module load ${modules}  && rm -rf ~/.local/share/rstudio/ && rserver --www-port=${PORT} \
+singularity exec rstudio_latest.sif \
+    bash -c ". /usr/local/Modules/init/bash  &&  module load ${modules}  && rm -rf ~/.local/share/rstudio/ && rserver --www-port=${PORT} \
             --auth-none=1 \
             --auth-pam-helper-path=pam-helper \
             --auth-stay-signed-in-days=30 \
